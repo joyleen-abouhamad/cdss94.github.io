@@ -290,7 +290,7 @@
       <span class="hero-tag tag-peach">AGI House · Final Demo</span>
     </div>
     <h1 class="hero-name">Joyleen<br><em>Abou Hamad</em></h1>
-    <p class="hero-sub">A learning journal on how we teach machines to be good — post-training, alignment, and the edges of what AI can become.</p>
+    <p class="hero-sub">A learning journal on how we teach machines to be good: post-training, alignment, and the edges of what AI can become.</p>
     <div class="hero-card">
       <div class="hero-card-dot">
         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -299,7 +299,7 @@
       </div>
       <div class="hero-card-info">
         <div class="hero-card-title">Building Thoughtful AI Systems</div>
-        <div class="hero-card-sub">Mondays · Soda 306 · Karina Nguyen & Kevin Miao</div>
+        <div class="hero-card-sub">Karina Nguyen & Kevin Miao</div>
       </div>
     </div>
     <div class="hero-scroll">↓ scroll</div>
@@ -312,10 +312,10 @@
   <div class="fade-in">
     <div class="week-label" style="color:#7c6a9a;">
       <span class="week-dot" style="background:#a78bfa;"></span>
-      Week 1 · Jan 26, 2026
+      Week 1
     </div>
     <h2 class="section-title" style="color:#1a1030;">What we owe <em style="color:#6b3fd4;">machines</em></h2>
-    <p class="prose" style="color:#3d2d5a;">The hard problem in AI isn't making machines smarter — it's teaching them to handle problems without right answers.</p>
+    <p class="prose" style="color:#3d2d5a;">The hard problem in AI isn't making machines smarter; it's teaching them to handle problems without right answers.</p>
 
     <div class="owe-grid">
       <div class="owe-card">
@@ -356,15 +356,15 @@
   <div class="fade-in">
     <div class="week-label" style="color:#3d6b56;">
       <span class="week-dot" style="background:#34d399;"></span>
-      Week 3 · Feb 9, 2026
+      Week 3
     </div>
     <h2 class="section-title" style="color:#0f2820;">Post-training <em style="color:#059669;">foundations</em></h2>
 
-    <p class="prose" style="color:#1a3a2a;">The framing that clicked for me this week: post-training isn't teaching the model new things. The knowledge is already in there. You're just <strong>shifting the distribution</strong> — telling it which version of itself to show up as. That reframe made the whole field feel less like engineering and more like, weirdly, parenting.</p>
+    <p class="prose" style="color:#1a3a2a;">The framing that clicked for me this week: post-training isn't teaching the model new things. The knowledge is already in there. You're just <strong>shifting the distribution</strong>, telling it which version of itself to show up as. That reframe made the whole field feel less like engineering and more like, weirdly, parenting.</p>
 
-    <p class="prose" style="color:#1a3a2a;">KL divergence as a budget was the other thing. Every method — SFT, RLHF, DPO — is spending from the same account. Drift too far from the reference model chasing reward and quality starts going down, not up. The model finds the cracks in what you measured, not what you meant. Goodhart everywhere.</p>
+    <p class="prose" style="color:#1a3a2a;">KL divergence as a budget was the other thing. Every method, SFT, RLHF, DPO, is spending from the same account. Drift too far from the reference model chasing reward and quality starts going down, not up. The model finds the cracks in what you measured, not what you meant. Goodhart everywhere.</p>
 
-    <p class="prose" style="color:#1a3a2a;">What I keep thinking about though: the hardest capabilities to train are the highest-K ones — taste, emotional nuance, individual voice. You literally cannot compress them into a reward signal. They're anti-average by nature. And that's exactly where the most interesting and human things live.</p>
+    <p class="prose" style="color:#1a3a2a;">What I keep thinking about though: the hardest capabilities to train are the highest-K ones: taste, emotional nuance, individual voice. You literally cannot compress them into a reward signal. They're anti-average by nature. And that's exactly where the most interesting and human things live.</p>
 
     <div class="big-quote" style="background:#0f2820;">
       <div class="quote-mark" style="color:#34d399;">"</div>
@@ -383,9 +383,9 @@
     </div>
     <h2 class="section-title" style="color:#1c1008;">Reasoning <em style="color:#d97706;">agents</em></h2>
 
-    <p class="prose" style="color:#2d1c08;">This week reframed something I thought I understood. The model isn't the agent — the <strong>loop</strong> is. The same weights become something completely different depending on whether you give them one shot or let them observe, revise, and try again. It's less about what the model knows and more about what structure you wrap around it.</p>
+    <p class="prose" style="color:#2d1c08;">This week reframed something I thought I understood. The model isn't the agent; the <strong>loop</strong> is. The same weights become something completely different depending on whether you give them one shot or let them observe, revise, and try again. It's less about what the model knows and more about what structure you wrap around it.</p>
 
-    <p class="prose" style="color:#2d1c08;">Memory was the part I hadn't thought hard enough about. Most agent failures aren't reasoning failures — they're memory failures. The agent forgets what it already tried, contradicts itself, loops. Designing what the agent remembers and how turns out to be as important as the model itself.</p>
+    <p class="prose" style="color:#2d1c08;">Memory was the part I hadn't thought hard enough about. Most agent failures aren't reasoning failures, they're memory failures. The agent forgets what it already tried, contradicts itself, loops. Designing what the agent remembers and how turns out to be as important as the model itself.</p>
 
     <p class="prose" style="color:#2d1c08;">And the compounding error thing is sobering. 90% per-step accuracy sounds great until you run it across 20 steps and land at 12% task success. That number reframes what "good enough" even means when you're building something real.</p>
 
@@ -406,11 +406,11 @@
     </div>
     <h2 class="section-title" style="color:#1a0828;">Multi-agent <em style="color:#9333ea;">systems</em></h2>
 
-    <p class="prose" style="color:#2a1040;">The thing that unsettled me this week: a planner, an executor, and a verifier can all agree — and still be completely wrong. The verifier shares the same biases as the model it's checking. It's not a safety net. It's just <strong>more of the same error, with more confidence.</strong> That recursive trust problem feels like it goes deep.</p>
+    <p class="prose" style="color:#2a1040;">The thing that unsettled me this week: a planner, an executor, and a verifier can all agree; and still be completely wrong. The verifier shares the same biases as the model it's checking. It's not a safety net. It's just <strong>more of the same error, with more confidence.</strong> That recursive trust problem feels like it goes deep.</p>
 
-    <p class="prose" style="color:#2a1040;">The model vs. harness debate also reframed a lot. The same Claude model going from 42% to 78% just by changing the system around it — not the weights, not the training. That's humbling. So much of what we call "intelligence" in these systems is actually orchestration. The harness is doing more work than we admit.</p>
+    <p class="prose" style="color:#2a1040;">The model vs. harness debate also reframed a lot. The same Claude model going from 42% to 78% just by changing the system around it, not the weights, not the training. That's humbling. So much of what we call "intelligence" in these systems is actually orchestration. The harness is doing more work than we admit.</p>
 
-    <p class="prose" style="color:#2a1040;">And Moltbook stuck with me — hundreds of thousands of agents interacting, apparently showing emergent behavior, but ultimately just pattern matching with no shared goals. <strong>Connectivity alone doesn't create intelligence.</strong> That line felt like a warning worth carrying into everything we build.</p>
+    <p class="prose" style="color:#2a1040;">And Moltbook stuck with me: hundreds of thousands of agents interacting, apparently showing emergent behavior, but ultimately just pattern matching with no shared goals. <strong>Connectivity alone doesn't create intelligence.</strong> That line felt like a warning worth carrying into everything we build.</p>
 
     <div class="big-quote" style="background:#1a0828;">
       <div class="quote-mark" style="color:#c084fc;">"</div>
@@ -427,13 +427,13 @@
       <span class="week-dot" style="background:#60a5fa;"></span>
       Week 12 · Final project · AGI House
     </div>
-    <h2 class="section-title" style="color:#081828;">MedTranslate — <em style="color:#2563eb;">translation that saves lives</em></h2>
+    <h2 class="section-title" style="color:#081828;">MedTranslate, <em style="color:#2563eb;">translation that saves lives</em></h2>
 
-    <p class="prose" style="color:#0f2030;">This project started from something that felt personal. Arabic-speaking patients navigating healthcare systems that weren't built for them, with doctors spending 30 minutes per visit just filling the language gap manually. Not a niche problem — 400M+ people. And yet commercial tools barely tried.</p>
+    <p class="prose" style="color:#0f2030;">This project started from something that felt personal. Arabic-speaking patients navigating healthcare systems that weren't built for them, with doctors spending 30 minutes per visit just filling the language gap manually. Not a niche problem: 400M+ people. And yet commercial tools barely tried.</p>
 
-    <p class="prose" style="color:#0f2030;">What we built: an end-to-end pipeline that takes Arabic patient speech in and produces clinical English doctor notes out. Two fine-tuned models, one seamless pipeline. The BLEU score went from 20.99 to 35.16 — <strong>a 75% improvement</strong> from domain adaptation alone, evaluated on data the model had never seen. That number felt real in a way that a lot of AI metrics don't.</p>
+    <p class="prose" style="color:#0f2030;">What we built: an end-to-end pipeline that takes Arabic patient speech in and produces clinical English doctor notes out. Two fine-tuned models, one seamless pipeline. The BLEU score went from 20.99 to 35.16: <strong>a 75% improvement</strong> from domain adaptation alone, evaluated on data the model had never seen. That number felt real in a way that a lot of AI metrics don't.</p>
 
-    <p class="prose" style="color:#0f2030;">Presenting at AGI House was a moment where everything from this semester clicked at once — post-training, fine-tuning, evaluation, building for real humans. The hardest part wasn't the model. It was figuring out what "good enough" even means when the stakes are someone's diagnosis.</p>
+    <p class="prose" style="color:#0f2030;">Presenting at AGI House was a moment where everything from this semester clicked at once: post-training, fine-tuning, evaluation, building for real humans. The hardest part wasn't the model. It was figuring out what "good enough" even means when the stakes are someone's diagnosis.</p>
 
     <div class="big-quote" style="background:#081828;">
       <div class="quote-mark" style="color:#60a5fa;">"</div>
@@ -463,7 +463,7 @@
       <div class="final-dot" style="background:#60a5fa;"></div>
     </div>
     <h2 class="final-title">still learning.<br><em>always building.</em></h2>
-    <p class="final-sub">This semester taught me that the hardest problems aren't technical. They're about figuring out what you actually want to teach — and whether you can.</p>
+    <p class="final-sub">This semester taught me that the hardest problems aren't technical. They're about figuring out what you actually want to teach, and whether you can.</p>
     <div class="final-tags">
       <span class="final-tag">post-training</span>
       <span class="final-tag">alignment</span>
