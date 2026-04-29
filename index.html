@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joyleen Abou Hamad — Building Thoughtful AI</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --lavender: #6b3fd4;
+    --lavender-light: #f5f0ff;
+    --green: #059669;
+    --green-light: #f0fdf8;
+    --amber: #d97706;
+    --amber-light: #fffbeb;
+    --purple: #9333ea;
+    --purple-light: #faf5ff;
+    --blue: #2563eb;
+    --blue-light: #eff6ff;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #fdfcff;
+    color: #1a1030;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    padding: 1rem 2rem;
+    display: flex; justify-content: space-between; align-items: center;
+    background: rgba(253,252,255,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(107,63,212,0.08);
+  }
+  .nav-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem; color: #1a1030; font-style: italic;
+  }
+  .nav-links { display: flex; gap: 1.5rem; }
+  .nav-links a {
+    font-size: 12px; font-weight: 400; color: #7c6a9a;
+    text-decoration: none; letter-spacing: 0.04em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: #6b3fd4; }
+
+  /* SECTIONS */
+  section {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+  }
+  section:first-of-type { padding-top: 7rem; }
+
+  .divider {
+    max-width: 680px; margin: 0 auto;
+    height: 1px; background: linear-gradient(to right, transparent, #e0d5fa, transparent);
+  }
+
+  /* WEEK LABEL */
+  .week-label {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 11px; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+    margin-bottom: 1.2rem;
+  }
+  .week-dot { width: 6px; height: 6px; border-radius: 50%; }
+
+  /* TITLES */
+  .section-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.2rem; line-height: 1.15; margin-bottom: 1.5rem;
+  }
+  .section-title em { font-style: italic; }
+
+  .prose {
+    font-size: 15px; font-weight: 300; line-height: 1.8;
+    margin-bottom: 1.2rem;
+  }
+  .prose strong { font-weight: 500; }
+
+  /* BIG QUOTE */
+  .big-quote {
+    border-radius: 16px; padding: 1.4rem 1.8rem;
+    margin-top: 1.8rem; position: relative;
+  }
+  .big-quote-text {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1.05rem; color: white; line-height: 1.6; font-style: italic;
+  }
+  .quote-mark {
+    font-family: 'DM Serif Display', serif;
+    font-size: 5rem; opacity: 0.2;
+    position: absolute; top: -10px; left: 16px; line-height: 1;
+  }
+  .big-quote-attr { font-size: 11px; margin-top: 0.7rem; font-weight: 400; }
+
+  /* ===================== HERO ===================== */
+  #hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    position: relative; overflow: hidden;
+    padding: 2rem;
+    background: #f5f0ff;
+  }
+  .hero-orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(70px); opacity: 0.45; pointer-events: none;
+  }
+  .hero-content { position: relative; z-index: 2; max-width: 600px; }
+  .hero-tags {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    justify-content: center; margin-bottom: 1.8rem;
+  }
+  .hero-tag {
+    font-size: 11px; font-weight: 500; letter-spacing: 0.08em;
+    text-transform: uppercase; padding: 5px 14px;
+    border-radius: 99px; border: 1px solid;
+  }
+  .tag-lav { background: #ede8ff; color: #5c3fbf; border-color: #c9b8f5; }
+  .tag-mint { background: #dff6ee; color: #1a7a55; border-color: #a0dfc7; }
+  .tag-peach { background: #fde8dd; color: #9b3e18; border-color: #f4b89a; }
+  .hero-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(2.6rem, 7vw, 4rem);
+    line-height: 1.1; margin-bottom: 0.5rem; color: #1a1030;
+  }
+  .hero-name em { font-style: italic; color: #6b3fd4; }
+  .hero-sub {
+    font-size: 1.05rem; font-weight: 300; color: #4a3a6a;
+    line-height: 1.7; max-width: 460px; margin: 0 auto 2rem;
+  }
+  .hero-card {
+    background: white; border: 1px solid #e0d5fa;
+    border-radius: 16px; padding: 1rem 1.5rem;
+    display: inline-flex; align-items: center; gap: 16px;
+    box-shadow: 0 2px 20px rgba(120,80,210,0.08);
+  }
+  .hero-card-dot {
+    width: 40px; height: 40px; border-radius: 12px;
+    background: linear-gradient(135deg, #a78bfa, #60a5fa);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+  .hero-card-dot svg { width: 20px; height: 20px; }
+  .hero-card-info { text-align: left; }
+  .hero-card-title { font-size: 13px; font-weight: 500; color: #1a1030; }
+  .hero-card-sub { font-size: 11px; color: #7c6a9a; margin-top: 2px; }
+  .hero-scroll {
+    margin-top: 2.5rem; font-size: 12px; color: #b0a0d0;
+    letter-spacing: 0.06em; text-transform: uppercase;
+    animation: pulse 2.5s infinite;
+  }
+  @keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+  /* ===================== WEEK 1 ===================== */
+  #week1 { background: white; }
+  .owe-grid {
+    display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;
+    margin-bottom: 2rem;
+  }
+  .owe-card {
+    background: white; border: 1px solid #e8e0f8;
+    border-radius: 14px; padding: 1rem 1.1rem;
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .owe-icon {
+    width: 36px; height: 36px; border-radius: 10px;
+    flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 16px;
+  }
+  .owe-card-title { font-size: 13px; font-weight: 500; color: #1a1030; margin-bottom: 3px; }
+  .owe-card-sub { font-size: 12px; color: #8b7aaa; line-height: 1.4; font-weight: 300; }
+  .timeline-row {
+    display: flex; border-radius: 12px; overflow: hidden;
+    border: 1px solid #e8e0f8; margin-bottom: 2rem;
+  }
+  .tl-item {
+    flex: 1; padding: 0.8rem 0.9rem; text-align: center;
+    border-right: 1px solid #e8e0f8; background: white;
+  }
+  .tl-item:last-child { border-right: none; }
+  .tl-item.active { background: #f5f0ff; }
+  .tl-era { font-size: 10px; text-transform: uppercase; letter-spacing: 0.06em; color: #a08cc0; font-weight: 500; margin-bottom: 4px; }
+  .tl-name { font-size: 12px; font-weight: 500; color: #1a1030; }
+  .tl-tag { font-size: 10px; color: #8b7aaa; font-weight: 300; margin-top: 2px; }
+
+  /* ===================== WEEK 3 ===================== */
+  #week3 { background: #f8fffe; }
+
+  /* ===================== WEEK 6 ===================== */
+  #week6 { background: white; }
+
+  /* ===================== WEEK 9 ===================== */
+  #week9 { background: #fdf8ff; }
+
+  /* ===================== WEEK 12 ===================== */
+  #week12 { background: white; }
+  .github-link {
+    display: inline-flex; align-items: center; gap: 8px;
+    font-size: 12px; font-weight: 500; color: #1d4ed8;
+    background: #eff6ff; border: 1px solid #bfdbfe;
+    border-radius: 99px; padding: 6px 16px;
+    text-decoration: none; margin-top: 1.5rem;
+    transition: background 0.2s;
+  }
+  .github-link:hover { background: #dbeafe; }
+  .gh-dot { width: 6px; height: 6px; border-radius: 50%; background: #3b82f6; }
+
+  /* ===================== FINAL ===================== */
+  #final {
+    min-height: 60vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    position: relative; overflow: hidden;
+    background: #f5f0ff;
+    padding: 5rem 2rem;
+  }
+  .final-orb {
+    position: absolute; border-radius: 50%;
+    filter: blur(70px); opacity: 0.35; pointer-events: none;
+  }
+  .final-content { position: relative; z-index: 2; }
+  .final-dots { display: flex; gap: 8px; justify-content: center; margin-bottom: 2rem; }
+  .final-dot { width: 8px; height: 8px; border-radius: 50%; }
+  .final-title {
+    font-family: 'DM Serif Display', serif;
+    font-size: 2.4rem; color: #1a1030; line-height: 1.2; margin-bottom: 1.2rem;
+  }
+  .final-title em { font-style: italic; color: #6b3fd4; }
+  .final-sub {
+    font-size: 0.95rem; color: #6b5b8a; font-weight: 300;
+    line-height: 1.8; max-width: 380px; margin: 0 auto 2.5rem;
+  }
+  .final-tags {
+    display: flex; gap: 8px; flex-wrap: wrap;
+    justify-content: center; margin-bottom: 2.5rem;
+  }
+  .final-tag {
+    font-size: 11px; font-weight: 400; color: #7c6aaa;
+    background: white; border: 1px solid #e0d5fa;
+    border-radius: 99px; padding: 5px 14px;
+  }
+  .final-sign {
+    font-family: 'DM Serif Display', serif;
+    font-size: 1rem; font-style: italic; color: #b0a0d0;
+  }
+
+  /* FADE IN */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-name">Joyleen Abou Hamad</span>
+  <div class="nav-links">
+    <a href="#week1">Week 1</a>
+    <a href="#week3">Week 3</a>
+    <a href="#week6">Week 6</a>
+    <a href="#week9">Week 9</a>
+    <a href="#week12">Project</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-orb" style="width:380px;height:380px;background:#c4b5fd;top:-80px;right:-60px;"></div>
+  <div class="hero-orb" style="width:300px;height:300px;background:#93c5fd;bottom:-60px;left:-40px;"></div>
+  <div class="hero-orb" style="width:220px;height:220px;background:#f9a8d4;top:40%;left:5%;"></div>
+
+  <div class="hero-content">
+    <div class="hero-tags">
+      <span class="hero-tag tag-lav">Post-Training · CDSS 94</span>
+      <span class="hero-tag tag-mint">UC Berkeley · Spring 2026</span>
+      <span class="hero-tag tag-peach">AGI House · Final Demo</span>
+    </div>
+    <h1 class="hero-name">Joyleen<br><em>Abou Hamad</em></h1>
+    <p class="hero-sub">A learning journal on how we teach machines to be good — post-training, alignment, and the edges of what AI can become.</p>
+    <div class="hero-card">
+      <div class="hero-card-dot">
+        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="hero-card-info">
+        <div class="hero-card-title">Building Thoughtful AI Systems</div>
+        <div class="hero-card-sub">Mondays · Soda 306 · Karina Nguyen & Kevin Miao</div>
+      </div>
+    </div>
+    <div class="hero-scroll">↓ scroll</div>
+  </div>
+</section>
+
+<!-- WEEK 1 -->
+<div class="divider"></div>
+<section id="week1">
+  <div class="fade-in">
+    <div class="week-label" style="color:#7c6a9a;">
+      <span class="week-dot" style="background:#a78bfa;"></span>
+      Week 1 · Jan 26, 2026
+    </div>
+    <h2 class="section-title" style="color:#1a1030;">What we owe <em style="color:#6b3fd4;">machines</em></h2>
+    <p class="prose" style="color:#3d2d5a;">The hard problem in AI isn't making machines smarter — it's teaching them to handle problems without right answers.</p>
+
+    <div class="owe-grid">
+      <div class="owe-card">
+        <div class="owe-icon" style="background:#ede8ff;">📚</div>
+        <div><div class="owe-card-title">Good teaching</div><div class="owe-card-sub">Clear values, not just rules</div></div>
+      </div>
+      <div class="owe-card">
+        <div class="owe-icon" style="background:#dff6ee;">🌱</div>
+        <div><div class="owe-card-title">Our care</div><div class="owe-card-sub">Moral consideration as they grow</div></div>
+      </div>
+      <div class="owe-card">
+        <div class="owe-icon" style="background:#fde8dd;">🔍</div>
+        <div><div class="owe-card-title">Honesty</div><div class="owe-card-sub">Transparent training intentions</div></div>
+      </div>
+      <div class="owe-card">
+        <div class="owe-icon" style="background:#e8f0ff;">✨</div>
+        <div><div class="owe-card-title">Imagination</div><div class="owe-card-sub">Space to develop beyond us</div></div>
+      </div>
+    </div>
+
+    <div class="timeline-row">
+      <div class="tl-item"><div class="tl-era">1960s</div><div class="tl-name">ELIZA</div><div class="tl-tag">hand-written rules</div></div>
+      <div class="tl-item"><div class="tl-era">2012</div><div class="tl-name">Deep learning</div><div class="tl-tag">learned features</div></div>
+      <div class="tl-item"><div class="tl-era">2020</div><div class="tl-name">GPT-3</div><div class="tl-tag">scale + data</div></div>
+      <div class="tl-item active"><div class="tl-era">2025</div><div class="tl-name">RLHF + o1</div><div class="tl-tag">reasoning + values</div></div>
+    </div>
+
+    <div class="big-quote" style="background:#1a1030;">
+      <div class="quote-mark" style="color:#a78bfa;">"</div>
+      <p class="big-quote-text">The next 10x model will feel more like a great collaborator and less like a smarter tool.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WEEK 3 -->
+<div class="divider"></div>
+<section id="week3">
+  <div class="fade-in">
+    <div class="week-label" style="color:#3d6b56;">
+      <span class="week-dot" style="background:#34d399;"></span>
+      Week 3 · Feb 9, 2026
+    </div>
+    <h2 class="section-title" style="color:#0f2820;">Post-training <em style="color:#059669;">foundations</em></h2>
+
+    <p class="prose" style="color:#1a3a2a;">The framing that clicked for me this week: post-training isn't teaching the model new things. The knowledge is already in there. You're just <strong>shifting the distribution</strong> — telling it which version of itself to show up as. That reframe made the whole field feel less like engineering and more like, weirdly, parenting.</p>
+
+    <p class="prose" style="color:#1a3a2a;">KL divergence as a budget was the other thing. Every method — SFT, RLHF, DPO — is spending from the same account. Drift too far from the reference model chasing reward and quality starts going down, not up. The model finds the cracks in what you measured, not what you meant. Goodhart everywhere.</p>
+
+    <p class="prose" style="color:#1a3a2a;">What I keep thinking about though: the hardest capabilities to train are the highest-K ones — taste, emotional nuance, individual voice. You literally cannot compress them into a reward signal. They're anti-average by nature. And that's exactly where the most interesting and human things live.</p>
+
+    <div class="big-quote" style="background:#0f2820;">
+      <div class="quote-mark" style="color:#34d399;">"</div>
+      <p class="big-quote-text">You can't compress what you don't understand. You can't teach what you can't compress.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WEEK 6 -->
+<div class="divider"></div>
+<section id="week6">
+  <div class="fade-in">
+    <div class="week-label" style="color:#7a5a3a;">
+      <span class="week-dot" style="background:#f59e0b;"></span>
+      Week 6 · Mar 9, 2026
+    </div>
+    <h2 class="section-title" style="color:#1c1008;">Reasoning <em style="color:#d97706;">agents</em></h2>
+
+    <p class="prose" style="color:#2d1c08;">This week reframed something I thought I understood. The model isn't the agent — the <strong>loop</strong> is. The same weights become something completely different depending on whether you give them one shot or let them observe, revise, and try again. It's less about what the model knows and more about what structure you wrap around it.</p>
+
+    <p class="prose" style="color:#2d1c08;">Memory was the part I hadn't thought hard enough about. Most agent failures aren't reasoning failures — they're memory failures. The agent forgets what it already tried, contradicts itself, loops. Designing what the agent remembers and how turns out to be as important as the model itself.</p>
+
+    <p class="prose" style="color:#2d1c08;">And the compounding error thing is sobering. 90% per-step accuracy sounds great until you run it across 20 steps and land at 12% task success. That number reframes what "good enough" even means when you're building something real.</p>
+
+    <div class="big-quote" style="background:#1c1008;">
+      <div class="quote-mark" style="color:#f59e0b;">"</div>
+      <p class="big-quote-text">Let the model think longer, not just be smarter by design.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WEEK 9 -->
+<div class="divider"></div>
+<section id="week9">
+  <div class="fade-in">
+    <div class="week-label" style="color:#5a3a7a;">
+      <span class="week-dot" style="background:#c084fc;"></span>
+      Week 9 · Apr 6, 2026
+    </div>
+    <h2 class="section-title" style="color:#1a0828;">Multi-agent <em style="color:#9333ea;">systems</em></h2>
+
+    <p class="prose" style="color:#2a1040;">The thing that unsettled me this week: a planner, an executor, and a verifier can all agree — and still be completely wrong. The verifier shares the same biases as the model it's checking. It's not a safety net. It's just <strong>more of the same error, with more confidence.</strong> That recursive trust problem feels like it goes deep.</p>
+
+    <p class="prose" style="color:#2a1040;">The model vs. harness debate also reframed a lot. The same Claude model going from 42% to 78% just by changing the system around it — not the weights, not the training. That's humbling. So much of what we call "intelligence" in these systems is actually orchestration. The harness is doing more work than we admit.</p>
+
+    <p class="prose" style="color:#2a1040;">And Moltbook stuck with me — hundreds of thousands of agents interacting, apparently showing emergent behavior, but ultimately just pattern matching with no shared goals. <strong>Connectivity alone doesn't create intelligence.</strong> That line felt like a warning worth carrying into everything we build.</p>
+
+    <div class="big-quote" style="background:#1a0828;">
+      <div class="quote-mark" style="color:#c084fc;">"</div>
+      <p class="big-quote-text">The real world is multi-agent. The question is whether the agents are actually collaborating — or just performing collaboration.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WEEK 12 / PROJECT -->
+<div class="divider"></div>
+<section id="week12">
+  <div class="fade-in">
+    <div class="week-label" style="color:#3a5a7a;">
+      <span class="week-dot" style="background:#60a5fa;"></span>
+      Week 12 · Final project · AGI House
+    </div>
+    <h2 class="section-title" style="color:#081828;">MedTranslate — <em style="color:#2563eb;">translation that saves lives</em></h2>
+
+    <p class="prose" style="color:#0f2030;">This project started from something that felt personal. Arabic-speaking patients navigating healthcare systems that weren't built for them, with doctors spending 30 minutes per visit just filling the language gap manually. Not a niche problem — 400M+ people. And yet commercial tools barely tried.</p>
+
+    <p class="prose" style="color:#0f2030;">What we built: an end-to-end pipeline that takes Arabic patient speech in and produces clinical English doctor notes out. Two fine-tuned models, one seamless pipeline. The BLEU score went from 20.99 to 35.16 — <strong>a 75% improvement</strong> from domain adaptation alone, evaluated on data the model had never seen. That number felt real in a way that a lot of AI metrics don't.</p>
+
+    <p class="prose" style="color:#0f2030;">Presenting at AGI House was a moment where everything from this semester clicked at once — post-training, fine-tuning, evaluation, building for real humans. The hardest part wasn't the model. It was figuring out what "good enough" even means when the stakes are someone's diagnosis.</p>
+
+    <div class="big-quote" style="background:#081828;">
+      <div class="quote-mark" style="color:#60a5fa;">"</div>
+      <p class="big-quote-text">Doctors fill the gap manually. We built a tool so they don't have to.</p>
+    </div>
+
+    <a class="github-link" href="https://github.com/karinahaddaad/med_translate" target="_blank">
+      <span class="gh-dot"></span>
+      github.com/karinahaddaad/med_translate
+    </a>
+  </div>
+</section>
+
+<!-- FINAL -->
+<div class="divider"></div>
+<section id="final" style="max-width:100%;padding:5rem 2rem;">
+  <div class="final-orb" style="width:300px;height:300px;background:#c4b5fd;top:-60px;right:-40px;"></div>
+  <div class="final-orb" style="width:250px;height:250px;background:#93c5fd;bottom:-40px;left:-30px;"></div>
+  <div class="final-orb" style="width:180px;height:180px;background:#f9a8d4;top:30%;left:5%;"></div>
+
+  <div class="final-content fade-in">
+    <div class="final-dots">
+      <div class="final-dot" style="background:#a78bfa;"></div>
+      <div class="final-dot" style="background:#34d399;"></div>
+      <div class="final-dot" style="background:#f59e0b;"></div>
+      <div class="final-dot" style="background:#c084fc;"></div>
+      <div class="final-dot" style="background:#60a5fa;"></div>
+    </div>
+    <h2 class="final-title">still learning.<br><em>always building.</em></h2>
+    <p class="final-sub">This semester taught me that the hardest problems aren't technical. They're about figuring out what you actually want to teach — and whether you can.</p>
+    <div class="final-tags">
+      <span class="final-tag">post-training</span>
+      <span class="final-tag">alignment</span>
+      <span class="final-tag">agents</span>
+      <span class="final-tag">Arabic NLP</span>
+      <span class="final-tag">AGI House</span>
+      <span class="final-tag">UC Berkeley</span>
+    </div>
+    <p class="final-sign">— Joyleen Abou Hamad, Spring 2026</p>
+  </div>
+</section>
+
+<script>
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) e.target.classList.add('visible');
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
